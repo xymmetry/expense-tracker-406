@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ft_nav"
+    app:startDestination="@id/dashboard">
+
+    <fragment
+        android:id="@+id/editTransacton"
+        android:name="com.example.fasttrack2.EditTransacton"
+        android:label="edit_transacton"
+        tools:layout="@layout/edit_transacton" />
+    <fragment
+        android:id="@+id/newTransaction"
+        android:name="com.example.fasttrack2.NewTransaction"
+        android:label="new_transaction"
+        tools:layout="@layout/new_transaction" />
+    <fragment
+        android:id="@+id/historyUp"
+        android:name="com.example.fasttrack2.HistoryUp"
+        android:label="history_up"
+        tools:layout="@layout/history_up" />
+    <fragment
+        android:id="@+id/FTProfile"
+        android:name="com.example.fasttrack2.FTProfile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/dashboard"
+        android:name="com.example.fasttrack2.dashboard"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+</navigation>
