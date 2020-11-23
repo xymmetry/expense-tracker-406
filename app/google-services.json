@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1014177926161",
+    "firebase_url": "https://ccps406-a6631.firebaseio.com",
+    "project_id": "ccps406-a6631",
+    "storage_bucket": "ccps406-a6631.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014177926161:android:75b09b81edabb6ae6cb5b0",
+        "android_client_info": {
+          "package_name": "com.ccps406.expensetracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014177926161-fv1k6bg9tpa1dik5q421g26nqbttvgud.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjU4me88wccrFsu5WtnMm3fWi6odpSbGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014177926161-fv1k6bg9tpa1dik5q421g26nqbttvgud.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

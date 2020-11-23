@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/regularwallpaper"
+    tools:context=".EditTransactions">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="311dp"
+        android:layout_height="59dp"
+        android:fontFamily="@font/ubuntu_bold"
+        android:text="Edit Transactions"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="36sp"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="21dp" />
+
+    <EditText
+        android:id="@+id/editTextNumberDecimal"
+        android:layout_width="349dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:hint="Amount"
+        android:inputType="numberDecimal"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="345dp"
+        android:layout_height="49dp"
+        android:ems="10"
+        android:fontFamily="@font/ubuntu_bold"
+        android:inputType="textPersonName"
+        android:text="Description"
+        android:textColor="#000000"
+        tools:layout_editor_absoluteX="41dp"
+        tools:layout_editor_absoluteY="194dp" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="349dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:hint="Date"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="280dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="133dp"
+        android:layout_height="72dp"
+        android:text="Update"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="362dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
