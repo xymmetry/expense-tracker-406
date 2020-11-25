@@ -7,6 +7,17 @@
     android:background="@drawable/regularwallpaper"
     tools:context=".EditTransactions">
 
+    <EditText
+        android:id="@+id/editTextNumberDecimal"
+        android:layout_width="349dp"
+        android:layout_height="52dp"
+        android:ems="10"
+        android:hint="Amount"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="207dp" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="311dp"
@@ -16,18 +27,28 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="36sp"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="21dp" />
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="120dp" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal"
+        android:id="@+id/editTextDate"
         android:layout_width="349dp"
-        android:layout_height="52dp"
+        android:layout_height="44dp"
         android:ems="10"
-        android:hint="Amount"
-        android:inputType="numberDecimal"
-        tools:layout_editor_absoluteX="34dp"
-        tools:layout_editor_absoluteY="108dp" />
+        android:hint="Date"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="379dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="133dp"
+        android:layout_height="72dp"
+        android:text="Update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="461dp" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -38,24 +59,8 @@
         android:inputType="textPersonName"
         android:text="Description"
         android:textColor="#000000"
-        tools:layout_editor_absoluteX="41dp"
-        tools:layout_editor_absoluteY="194dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="289dp" />
 
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="349dp"
-        android:layout_height="44dp"
-        android:ems="10"
-        android:hint="Date"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="280dp" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="133dp"
-        android:layout_height="72dp"
-        android:text="Update"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="362dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

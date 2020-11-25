@@ -52,7 +52,7 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                startActivity(new Intent(getApplicationContext(), Dashhost.class)); //changed from MainActivity to Dashhost
                             }
                             else{
                                 Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();

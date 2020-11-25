@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Expensetracker">
-        <activity android:name=".listTransactions"></activity>
+        <activity android:name=".Dashhost"></activity>
+        <activity android:name=".listTransactions" />
         <activity android:name=".Transactions" />
         <activity android:name=".Mainpage">
             <intent-filter>

@@ -49,7 +49,7 @@ public class Register extends AppCompatActivity {
 
 
         if(fAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(),Dashhost.class)); //changed from MainActivity to Dashhost
             finish();
         }
 
@@ -103,7 +103,7 @@ public class Register extends AppCompatActivity {
                                      Log.d(TAG, "User " + userID + " profile:" );
                                  }
                              });
-                             startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                             startActivity(new Intent(getApplicationContext(),Dashhost.class)); // changed from MainActivity.class to Dashhost.class
                          }
                          else{
                              Toast.makeText(Register.this,"Error occurred, Try Again!", Toast.LENGTH_SHORT).show();
