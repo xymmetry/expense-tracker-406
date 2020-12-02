@@ -18,7 +18,7 @@
         android:icon="@drawable/ic_baseline_monetization_on_24"
         android:title="History" />
     <item
-        android:id="@+id/profileFragment"
-        android:icon="@drawable/ic_baseline_person_24"
-        android:title="Profile" />
+        android:id="@+id/upcomingFragment"
+        android:icon="@drawable/ic_baseline_addchart_24"
+        android:title="Upcoming" />
 </menu>

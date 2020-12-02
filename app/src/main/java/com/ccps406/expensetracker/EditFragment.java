@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import androidx.appcompat.app.AppCompatActivity;
+
+
+
+
+
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,15 +38,17 @@ import com.google.firebase.firestore.FirebaseFirestore;
  */
 public class EditFragment extends Fragment {
 
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    TextView amount, description, dated;
+    Button update;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+    String userID = auth.getCurrentUser().getUid();
+    final DocumentReference dr = db.document("sampleModel2/" +userID +"/Expense/Individual");
+    private CollectionReference colref = db.collection("sampleModel2")
+            .document(userID)
+            .collection("Expense")
+            .document("Individual")
+            .collection("transactions");
 
     public EditFragment() {
         // Required empty public constructor
@@ -56,8 +66,6 @@ public class EditFragment extends Fragment {
     public static EditFragment newInstance(String param1, String param2) {
         EditFragment fragment = new EditFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -65,27 +73,57 @@ public class EditFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_edit_transactions, container, false); // changed R.layout.fragment_edit to activity_edit_transactions
+
+        View editView = inflater.inflate(R.layout.activity_edit_transactions, container, false);
+
+
+
+        // the part below does not work
+        editView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String amt = amount.getText().toString().trim();
+                String desc = description.getText().toString().trim();
+                String dat = dated.getText().toString().trim();
+
+                dr.update(amt,desc,dat);
+
+            }
+        });
+
+        return editView;
+
+
+        //return inflater.inflate(R.layout.activity_edit_transactions, container, false); // changed R.layout.fragment_edit to activity_edit_transactions
     }
 
 
     //added activity from original EditTransactions
 
-    //Uncomment below to put activity stuff here
-    //@Override
-   // public void onActivityCreated(Bundle savedInstanceState) {
-    //    super.onActivityCreated(savedInstanceState);
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+/*
+        update.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String amt = amount.getText().toString().trim();
+                String desc = description.getText().toString().trim();
+                String dat = dated.getText().toString().trim();
+
+                dr.update(amt,desc,dat);
+
+            }
+        });
+*/
 
 
-   // }
+    }
 }

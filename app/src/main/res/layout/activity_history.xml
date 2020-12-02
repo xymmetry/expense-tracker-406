@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/regularwallpaper"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:keepScreenOn="true"
+    tools:context=".History">
+
+    <ScrollView
+        android:layout_width="395dp"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:layout_centerInParent="true"
+        android:fadeScrollbars="false"
+        android:layout_below="@id/titles_layout"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@drawable/custom_scrollbar"
+        android:layout_marginEnd="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/history_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/titles_layout"
+        android:layout_width="356dp"
+        android:layout_height="27dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/history_title"
+        android:layout_marginTop="60dp"
+        android:textAlignment="center"
+        android:layout_marginEnd="35dp"
+        android:gravity="center"
+
+        android:background="@drawable/rounded_border_relative_layout">
+
+        <TextView
+            android:id="@+id/amount_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/oxygen"
+            android:layout_weight="0.4"
+            android:layout_marginStart="10dp"
+            android:text="Amount"
+            android:textColor="#000000">
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/description_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/oxygen"
+            android:textColor="#000000"
+            android:layout_weight="1"
+            android:text="Description">
+        </TextView>
+
+        <TextView
+            android:id="@+id/date_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:fontFamily="@font/oxygen"
+            android:text="Date"
+            android:layout_marginEnd="10dp"
+            android:textColor="#000000">
+        </TextView>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/empty_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/oxygen"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="10dp"
+        android:text="Looks like there's nothing here yet"
+        android:textColor="#000000">
+    </TextView>
+
+    <TextView
+        android:id="@+id/history_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ubuntu_bold"
+        android:text="History"
+        android:textColor="@color/black"
+        android:textSize="36sp" />
+
+</RelativeLayout>

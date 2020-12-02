@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void logout(View view){
         //FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(),Transactions.class));
+        startActivity(new Intent(getApplicationContext(),Transaction.class));
         finish();
     }
 

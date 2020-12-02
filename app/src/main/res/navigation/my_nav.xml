@@ -25,8 +25,8 @@
         android:label="fragment_transaction"
         tools:layout="@layout/fragment_transaction" />
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.ccps406.expensetracker.ProfileFragment"
+        android:id="@+id/upcomingFragment"
+        android:name="com.ccps406.expensetracker.UpcomingFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_upcoming" />
 </navigation>

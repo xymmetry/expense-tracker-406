@@ -3,16 +3,9 @@ package com.ccps406.expensetracker;
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,6 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Switch;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,23 +36,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NewFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class NewFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // parameters
-    private String mParam1;
-    private String mParam2;
+public class Transaction extends AppCompatActivity {
 
     private static final String TAG = "Onclick addExpense" ;
     private static final String TAG2 = "Onclick addIncome" ;
@@ -85,47 +66,11 @@ public class NewFragment extends Fragment {
     DocumentReference financeInfo;
     Spinner spinner;
 
-
-    public NewFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NewFragment newInstance(String param1, String param2) {
-        NewFragment fragment = new NewFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_transaction);
 
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_transaction, container, false); //changed R.layout.fragment_new to activity_transactions
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
 
         mStore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -134,28 +79,25 @@ public class NewFragment extends Fragment {
                 .collection("Profile").document("Financial");
         mStore = FirebaseFirestore.getInstance();
 
-        mAmount = getView().findViewById(R.id.amount_in);
-        mDescription = getView().findViewById(R.id.description_input);
-        //mRepeatDays = getView().findViewById(R.id.repeat_days);
-        mEndDate = getView().findViewById(R.id.date_end);
-        mOccurrences = getView().findViewById(R.id.endBy);
-        mStartDate = getView().findViewById(R.id.start_date);
-        mRadioButtonLayout = getView().findViewById(R.id.radio_button_layouts);
-        mRepeatEveryLayout = getView().findViewById(R.id.repeat_every_layout);
+        mAmount = findViewById(R.id.amount_in);
+        mDescription = findViewById(R.id.description_input);
+        //mRepeatDays = findViewById(R.id.repeat_days);
+        mEndDate = findViewById(R.id.date_end);
+        mOccurrences = findViewById(R.id.endBy);
+        mStartDate = findViewById(R.id.start_date);
+        mRadioButtonLayout = findViewById(R.id.radio_button_layouts);
+        mRepeatEveryLayout = findViewById(R.id.repeat_every_layout);
 
-        mRecurring = getView().findViewById(R.id.recurring_switch);
-        mOccurrenceBtn = getView().findViewById(R.id.radioButton2);
-        mDateBtn = getView().findViewById(R.id.radioButton3);
+        mRecurring = findViewById(R.id.recurring_switch);
+        mOccurrenceBtn = findViewById(R.id.radioButton2);
+        mDateBtn = findViewById(R.id.radioButton3);
 
-        mExpenseBtn = getView().findViewById(R.id.add_expense);
-        mIncomeBtn = getView().findViewById(R.id.add_Income);
+        mExpenseBtn = findViewById(R.id.add_expense);
+        mIncomeBtn = findViewById(R.id.add_Income);
 
-        spinner = getView().findViewById(R.id.timeframe_select);
+        spinner = findViewById(R.id.timeframe_select);
 
-
-        // functions
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.time_frame, android.R.layout.simple_spinner_dropdown_item); //changed from this to getActivity()
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.time_frame, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -215,7 +157,6 @@ public class NewFragment extends Fragment {
                 }
             }
         });
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -285,10 +226,10 @@ public class NewFragment extends Fragment {
     }
 
     public void updateTotals(double amount, String type){
-        financeInfo.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()) {
+      financeInfo.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+          @Override
+          public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+              if(task.isSuccessful()) {
                     DocumentSnapshot documentSnapshot =  task.getResult();
                     double currentAmount=0;
                     if(type.equals(EXPENSE)){
@@ -300,26 +241,26 @@ public class NewFragment extends Fragment {
                     double newAmount = currentAmount+amount;
                     updateDocument(newAmount, type);
                 }
-            }
-        });
+          }
+      });
     }
 
     public void updateDocument(double newAmount, String type){
-        if (type.equals(EXPENSE)){
-            financeInfo.update("eTotal", newAmount).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG2, "Updated Amount eTotal");
-                }
-            });
-        }else{
-            financeInfo.update("iTotal", newAmount).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG2, "Updated Amount iTotal");
-                }
-            });
-        }
+       if (type.equals(EXPENSE)){
+           financeInfo.update("eTotal", newAmount).addOnSuccessListener(new OnSuccessListener<Void>() {
+               @Override
+               public void onSuccess(Void aVoid) {
+                   Log.d(TAG2, "Updated Amount eTotal");
+               }
+           });
+       }else{
+           financeInfo.update("iTotal", newAmount).addOnSuccessListener(new OnSuccessListener<Void>() {
+               @Override
+               public void onSuccess(Void aVoid) {
+                   Log.d(TAG2, "Updated Amount iTotal");
+               }
+           });
+       }
     }
 
     public void addToHistory(TransactionModel regModel, String docId){
@@ -456,7 +397,4 @@ public class NewFragment extends Fragment {
                 break;
         }
     }
-
-
-
-    }
+}

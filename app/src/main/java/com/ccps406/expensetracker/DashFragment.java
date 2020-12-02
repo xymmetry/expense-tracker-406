@@ -74,16 +74,13 @@ public class DashFragment extends Fragment {
 
     }
 
-    //public void seeTransactions(View view){
-    //    startActivity(new Intent(getApplicationContext(),listTransactions.class));
-
-    //}
 
     //public void logout(View view){
         //FirebaseAuth.getInstance().signOut();
-    //    startActivity(new Intent(getApplicationContext(),Transactions.class));
     //    finish();
     //}
+
+    // PieChart Data settings below
 
     private ArrayList<PieEntry> expensesDataSet(){
         ArrayList<PieEntry> expenses = new ArrayList<>();
@@ -94,6 +91,7 @@ public class DashFragment extends Fragment {
         expenses.add(new PieEntry(90, "Entertainment"));
         return expenses;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -106,6 +104,7 @@ public class DashFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //Pie Chart visual settings
         expenseChart = getActivity().findViewById(R.id.expensechart);
         PieDataSet expensesDataSet = new PieDataSet(expensesDataSet(), "Expenses");
         expensesDataSet.setColors(ColorTemplate.PASTEL_COLORS);
