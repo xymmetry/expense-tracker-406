@@ -20,6 +20,10 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 
 /**
@@ -32,14 +36,15 @@ public class DashFragment extends Fragment {
     //pie chart initialization
     PieChart expenseChart;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    // parameters
+    FirebaseFirestore mStore = FirebaseFirestore.getInstance();
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseUser user = mAuth.getCurrentUser();
+    CollectionReference historyRef = mStore.collection("users").document(user.getUid()).collection("History");
+
+
+
 
     public DashFragment() {
         // Required empty public constructor
@@ -57,8 +62,6 @@ public class DashFragment extends Fragment {
     public static DashFragment newInstance(String param1, String param2) {
         DashFragment fragment = new DashFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -66,21 +69,9 @@ public class DashFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
 
     }
 
-
-    //public void logout(View view){
-        //FirebaseAuth.getInstance().signOut();
-    //    finish();
-    //}
-
-    // PieChart Data settings below
 
     private ArrayList<PieEntry> expensesDataSet(){
         ArrayList<PieEntry> expenses = new ArrayList<>();
@@ -105,7 +96,7 @@ public class DashFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         //Pie Chart visual settings
-        expenseChart = getActivity().findViewById(R.id.expensechart);
+        expenseChart = getView().findViewById(R.id.expensechart);
         PieDataSet expensesDataSet = new PieDataSet(expensesDataSet(), "Expenses");
         expensesDataSet.setColors(ColorTemplate.PASTEL_COLORS);
         expensesDataSet.setValueLineColor(R.color.design_default_color_primary);

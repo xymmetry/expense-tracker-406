@@ -10,10 +10,11 @@
         android:label="fragment_dash"
         tools:layout="@layout/fragment_dash" />
     <fragment
-        android:id="@+id/editFragment"
-        android:name="com.ccps406.expensetracker.EditFragment"
-        android:label="fragment_edit"
-        tools:layout="@layout/fragment_edit" />
+        android:id="@+id/exitFragment"
+        android:name="com.ccps406.expensetracker.ExitFragment"
+        android:label="fragment_exit"
+        tools:layout="@layout/fragment_exit" />
+
     <fragment
         android:id="@+id/newFragment"
         android:name="com.ccps406.expensetracker.NewFragment"
@@ -29,4 +30,5 @@
         android:name="com.ccps406.expensetracker.UpcomingFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_upcoming" />
+
 </navigation>

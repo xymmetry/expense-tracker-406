@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -46,7 +47,7 @@ import java.util.Locale;
  * Use the {@link NewFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewFragment extends Fragment {
+public class NewFragment extends Fragment implements View.OnClickListener{      // added implement for OnClickListener
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -120,7 +121,14 @@ public class NewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_transaction, container, false); //changed R.layout.fragment_new to activity_transactions
+
+        View viewTransaction = inflater.inflate(R.layout.activity_transaction, container, false); // added to fix crashes
+        viewTransaction.findViewById(R.id.radioButton2).setOnClickListener(this);
+        viewTransaction.findViewById(R.id.radioButton3).setOnClickListener(this);
+
+
+       // return inflater.inflate(R.layout.activity_transaction, container, false); //changed R.layout.fragment_new to activity_transactions
+        return viewTransaction;
     }
 
     @Override
@@ -292,9 +300,11 @@ public class NewFragment extends Fragment {
                     DocumentSnapshot documentSnapshot =  task.getResult();
                     double currentAmount=0;
                     if(type.equals(EXPENSE)){
+                        assert documentSnapshot != null;
                         currentAmount = documentSnapshot.getDouble("eTotal");
                     }
                     else{
+                        assert documentSnapshot != null;
                         currentAmount = documentSnapshot.getDouble("iTotal");
                     }
                     double newAmount = currentAmount+amount;
@@ -433,7 +443,7 @@ public class NewFragment extends Fragment {
         return formatter.format(date);
     }
 
-    public void OnRadioButtonClick(View v){
+/*    public void OnRadioButtonClick(View v){
         boolean checked = ((RadioButton) v).isChecked();
 
         switch(v.getId()) {
@@ -455,8 +465,39 @@ public class NewFragment extends Fragment {
                 mEndDate.setVisibility(View.VISIBLE);
                 break;
         }
+    }*/
+    @Override
+    public void onClick(View v){
+        boolean checked = ((RadioButton) v).isChecked();
+
+        switch(v.getId()) {
+            case R.id.radioButton2:
+                if (checked)
+                    isEndbyDate = false;
+                isEndByOccurrences = true;
+                mOccurrences.setEnabled(true);
+                mOccurrences.setVisibility(View.VISIBLE);
+                mEndDate.setVisibility(View.INVISIBLE);
+                mEndDate.setText(null);
+                break;
+            case R.id.radioButton3:
+                if (checked)
+                    isEndbyDate = true;
+                isEndByOccurrences =false;
+                mOccurrences.setText(null);
+                mOccurrences.setVisibility(View.INVISIBLE);
+                mEndDate.setVisibility(View.VISIBLE);
+                break;
+            }
     }
 
 
 
-    }
+
+
+
+
+
+
+
+}
