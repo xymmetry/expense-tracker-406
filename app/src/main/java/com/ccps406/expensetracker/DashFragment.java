@@ -2,6 +2,8 @@ package com.ccps406.expensetracker;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,9 +13,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
@@ -22,7 +29,15 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -38,13 +53,13 @@ public class DashFragment extends Fragment {
 
 
     // parameters
-    FirebaseFirestore mStore = FirebaseFirestore.getInstance();
+
+/*    FirebaseFirestore mStore = FirebaseFirestore.getInstance();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    FirebaseUser user = mAuth.getCurrentUser();
-    CollectionReference historyRef = mStore.collection("users").document(user.getUid()).collection("History");
-
-
-
+    String userID = mAuth.getCurrentUser().getUid();
+    DocumentReference historyRef = mStore.collection("users").document(userID);
+    DocumentReference financialRef = mStore.collection("users").document(userID).collection("Profile").document("Financial");
+    TextView mBudget, mIncome, mExpense, mNet;*/
 
     public DashFragment() {
         // Required empty public constructor
@@ -72,6 +87,28 @@ public class DashFragment extends Fragment {
 
     }
 
+
+/*    private ArrayList<PieEntry> expensesDataSet(){
+        ArrayList<PieEntry> expenses = new ArrayList<>();
+        historyRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                 for (QueryDocumentSnapshot document : task.getResult()){
+                     double amount = document.getDouble("amount");
+                     String description = document.getString("description");
+                     expenses.add(new PieEntry((float) amount, description));
+
+                 }
+                }
+                else{
+                    expenses.add(new PieEntry(0, "No Expenses"));
+                }
+            }
+
+        });
+        return expenses;
+    }*/
 
     private ArrayList<PieEntry> expensesDataSet(){
         ArrayList<PieEntry> expenses = new ArrayList<>();
@@ -112,6 +149,31 @@ public class DashFragment extends Fragment {
         expensesDataSet.setDrawValues(false);
         expenseChart.getLegend().setEnabled(false);
         expenseChart.setDrawHoleEnabled(false);
+
+
+        // extra
+
+/*
+        mBudget = getView().findViewById(R.id.budgetGoal);
+        mNet = getView().findViewById(R.id.netBalance);
+        mIncome = getView().findViewById(R.id.incomeView);
+        mExpense = getView().findViewById(R.id.textView5);
+        financialRef.addSnapshotListener(getActivity(), new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+                double eTotal = documentSnapshot.getDouble("eTotal");
+                double iTotal = documentSnapshot.getDouble("iTotal");
+                double netBalance = iTotal + (-eTotal);
+                double budget = documentSnapshot.getDouble("budget");
+                mBudget.setText(Double.toString(budget));
+                mNet.setText(Double.toString(netBalance));
+                mIncome.setText(Double.toString(iTotal));
+                mExpense.setText(Double.toString(eTotal));
+
+
+            }
+        });
+*/
 
 
 

@@ -127,12 +127,6 @@ public class UpcomingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //View upView = inflater.inflate(R.layout.activity_upcoming, container, false);
-        //RecyclerView rView = (RecyclerView) upView.findViewById(R.id.upcoming_view);
-        //rView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //RecyclerViewAdpater adapter = new RecyclerViewAdpater(amounts, descriptions, dates, types);
-        //rView.setAdapter(adapter);
-        //return upView;
         return inflater.inflate(R.layout.activity_upcoming, container, false);
     }
 

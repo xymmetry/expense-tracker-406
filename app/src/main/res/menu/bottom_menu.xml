@@ -20,6 +20,6 @@
         android:title="Upcoming" />
     <item
         android:id="@+id/exitFragment"
-        android:icon="@drawable/ic_baseline_exit_to_app_24"
-        android:title="Log out" />
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Profile" />
 </menu>
