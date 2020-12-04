@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/regularwallpaper"
+    android:orientation="vertical"
+    android:padding="40dp"
+    tools:context=".Profile">
+
+
+    <TextView
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:text="User Profile"
+        android:textColor="#342853"
+        android:fontFamily="@font/ubuntu_bold"
+        android:layout_gravity="left"
+        android:textSize="36sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/oxygen"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text="User Info"
+        />
+
+
+
+    <EditText
+        android:id="@+id/name_preview"
+        android:layout_width="312dp"
+        android:layout_height="52dp"
+        android:background="@drawable/edit_text_border"
+        android:fontFamily="@font/oxygen"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        />
+
+    <EditText
+        android:id="@+id/email_preview"
+        android:layout_width="312dp"
+        android:layout_height="52dp"
+        android:background="@drawable/edit_text_border"
+        android:fontFamily="@font/oxygen"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:hint="example@gmail.com"
+        android:inputType="textEmailAddress"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/oxygen"
+        android:textColor="@color/black"
+        android:text="Password"
+        />
+
+
+    <EditText
+        android:id="@+id/new_password"
+        android:layout_width="312dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edit_text_border"
+        android:fontFamily="@font/oxygen"
+        android:hint="New password"
+        android:inputType="textPassword"
+       />
+
+    <TextView
+        android:layout_width="312dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        android:text="Password must contain at least one capital letter and one number"
+        android:fontFamily="@font/oxygen"
+        android:textColorHighlight="#000000"
+        android:textColorLink="#000000" />
+
+
+
+    <EditText
+        android:id="@+id/confirm_password"
+        android:layout_width="312dp"
+        android:layout_height="52dp"
+        android:background="@drawable/edit_text_border"
+        android:fontFamily="@font/oxygen"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/oxygen"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/black"
+        android:text="Budget"
+      />
+
+    <EditText
+        android:id="@+id/budget_view"
+        android:layout_width="312dp"
+        android:layout_height="52dp"
+        android:background="@drawable/edit_text_border"
+        android:fontFamily="@font/oxygen"
+        android:hint="0000.000"
+        android:inputType="number"
+        />
+
+
+    <Button
+        android:id="@+id/update_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/oxygen"
+        android:layout_gravity="center"
+        android:backgroundTint="#78318A"
+        android:layout_marginTop="5dp"
+        android:text="update"
+        android:onClick="updateInfo"/>
+
+    <Button
+        android:id="@+id/profile_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/oxygen"
+        android:backgroundTint="#78318A"
+        android:layout_gravity="center"
+        android:onClick="logout"
+        android:text="logout"
+        />
+
+</LinearLayout>
